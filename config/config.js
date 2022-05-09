@@ -1,4 +1,4 @@
-{
+export default {
   "dev": {
     "username": "root",
     "password": "gj1109gj",
