@@ -1,12 +1,27 @@
-import express from 'express';
-
+import express from "express";
+import {sequelize} from "./models/index.js";
+import menuRoutes from './routes/menuRoute.js';
 const app = express();
 let port = process.env.port || 8080;
 
-app.get(`/`, (req, res) => {
-    res.send(`Hello World!`);
+sequelize.sync({ force:false })
+    .then(() => {
+        console.log("DB Connected");
+    }).catch((err) => {
+    console.error(err);
+    })
+
+app.use(express.json);
+app.use(express.urlencoded({extended: false}));
+
+app.use('/menu', menuRoutes);
+
+app.use((req, res, next) => {
+    const error = new Error(`${req.method} ${req.url} Router Not Found`);
+    error.status = 404;
+    next(error);
 });
 
-const app = app.listen(port, () => {
+app.listen(port, () => {
     console.log(`server on ${port}`);
 });
