@@ -1,10 +1,10 @@
 import {Router} from "express";
-import {menuController} from "../controllers/menuControllers.js";
+import {getMenu, getMenuType, recommendMenu, uploadMenu, updateMenu} from "../controllers/menuControllers.js";
 
 const router = Router();
 
-router.get("/", menuController.getMenu);
-router.get("/type", menuController.getMenuType);
-router.get("/recommend", menuController.recommendMenu);
-router.post("/", menuController.uploadMenu);
-router.put("/", menuController.updateMenu);
+router.get("/", getMenu);
+router.get("/type", getMenuType);
+router.get("/recommend", recommendMenu);
+router.post("/", uploadMenu);
+router.put("/", updateMenu);
