@@ -1,10 +1,10 @@
 import express from "express";
-import {sequelize} from "./models/index.js";
+import {db} from "./models/index.js";
 import menuRoutes from './routes/menuRoute.js';
 const app = express();
 let port = process.env.port || 8080;
 
-sequelize.sync({ force:false })
+db.sequelize.sync({force: false })
     .then(() => {
         console.log("DB Connected");
     }).catch((err) => {
