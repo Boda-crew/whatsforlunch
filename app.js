@@ -11,9 +11,6 @@ db.sequelize.sync({force: false })
     console.error(err);
     })
 
-app.use(express.json);
-app.use(express.urlencoded({extended: false}));
-
 app.use('/menu', menuRoutes);
 
 app.use((req, res, next) => {
