@@ -1,4 +1,4 @@
-import {findAll, findAllTypes, recommend, upload, update} from "../services/menuService.js"
+import {findAll, findAllTypes, recommend, upload, update, destroy} from "../services/menuService.js"
 
 const getMenu = async (req, res) => {
     const data = await findAll(req, res);
@@ -38,4 +38,11 @@ const updateMenu = async (req, res) => {
     })
 }
 
-export {getMenu, getMenuType, recommendMenu, uploadMenu, updateMenu}
+const destroyMenu = async (req, res) => {
+    await destroy(req, res);
+    res.status(200).json({
+        message : "삭제 되었습니다."
+    })
+}
+
+export {getMenu, getMenuType, recommendMenu, uploadMenu, updateMenu, destroyMenu}
