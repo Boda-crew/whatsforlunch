@@ -24,7 +24,6 @@ class Menu extends Sequelize.Model {
             collate: 'utf8_general_ci'
         });
     }
-
     static associate(db) {}
 };
 

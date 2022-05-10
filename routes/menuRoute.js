@@ -7,6 +7,6 @@ router.get("/", getMenu);
 router.get("/type", getMenuType);
 router.get("/recommend", recommendMenu);
 router.post("/", uploadMenu);
-router.put("/", updateMenu);
+router.put("/:menuId", updateMenu);
 
 export default router;
