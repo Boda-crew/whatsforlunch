@@ -17,10 +17,10 @@ app.use(express.urlencoded({extended: false}));
 
 app.use('/menu', menuRoutes);
 
-app.use((req, res, next) => {
-    const error = new Error(`${req.method} ${req.url} Router Not Found`);
-    error.status = 404;
-    next(error);
+app.use((req, res) => {
+    res.status(404).json({
+        message: "잘못된 요청입니다."
+    });
 });
 
 app.listen(port, () => {
