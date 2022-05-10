@@ -1,10 +1,10 @@
 import {Menu} from "../models/Menu.js";
 
-const findAll = async (req, res) => {
+const findAll = async () => {
     return await Menu.findAll({});
 }
 
-const findAllTypes = async (req, res) => {
+const findAllTypes = async () => {
     const menuList = await Menu.findAll({});
     const typeSet = new Set();
     for (const menu of menuList) {
@@ -25,7 +25,7 @@ function getRandom(maxNum) {
     return Math.floor(Math.random() * maxNum)
 }
 
-const recommend = async (req, res) => {
+const recommend = async (req) => {
     const menuList = await Menu.findAll(getSearchOption(req));
     const quantity = req.query['num'];
 
@@ -42,14 +42,14 @@ const recommend = async (req, res) => {
     return Array.from(data);
 }
 
-const upload = async (req, res) => {
+const upload = async (req) => {
     await Menu.create({
         name: req.body.name,
         type: req.body.type
     });
 }
 
-const update = async (req, res) => {
+const update = async (req) => {
     await Menu.update({
         name: req.body.name,
         type: req.body.type
@@ -58,7 +58,7 @@ const update = async (req, res) => {
     })
 }
 
-const destroy = async (req, res) => {
+const destroy = async (req) => {
     await Menu.destroy({
         where : { id: req.params['menuId'] }
     })

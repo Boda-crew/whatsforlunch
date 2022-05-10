@@ -1,7 +1,7 @@
 import {findAll, findAllTypes, recommend, upload, update, destroy} from "../services/menuService.js"
 
 const getMenu = async (req, res) => {
-    const data = await findAll(req, res);
+    const data = await findAll();
     res.status(200).json({
         data: data,
         message : "메뉴 리스트를 불러왔습니다."
@@ -9,7 +9,7 @@ const getMenu = async (req, res) => {
 }
 
 const getMenuType = async (req, res) => {
-    const data = await findAllTypes(req, res);
+    const data = await findAllTypes();
     res.status(200).json({
         data: data,
         message : "메뉴 타입을 가져왔습니다."
@@ -17,7 +17,7 @@ const getMenuType = async (req, res) => {
 }
 
 const recommendMenu = async (req, res) => {
-    const data = await recommend(req, res);
+    const data = await recommend(req);
     res.status(200).json({
         data: data,
         message : "메뉴가 추천 되었습니다."
@@ -25,21 +25,21 @@ const recommendMenu = async (req, res) => {
 }
 
 const uploadMenu = async (req, res) => {
-    await upload(req, res);
+    await upload(req);
     res.status(201).json({
         message : "업로드 되었습니다."
     })
 }
 
 const updateMenu = async (req, res) => {
-    await update(req, res);
+    await update(req);
     res.status(200).json({
         message : "업데이트 되었습니다."
     })
 }
 
 const destroyMenu = async (req, res) => {
-    await destroy(req, res);
+    await destroy(req);
     res.status(200).json({
         message : "삭제 되었습니다."
     })
