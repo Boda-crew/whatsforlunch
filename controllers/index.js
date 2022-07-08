@@ -1,0 +1,1 @@
+export * as MenuController from "./menuController.js"
