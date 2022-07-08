@@ -18,7 +18,9 @@
     "nodemon": "^2.0.16",
     "sequelize": "^6.19.0",
     "sequelize-cli": "^6.4.1",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "winston": "^3.8.1",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "type": "module"
 }
