@@ -13,21 +13,20 @@ const findAllTypes = async () => {
     return Array.from(typeSet);
 }
 
-function getSearchOption(req) {
-    if (req.query['type'] !== undefined) {
-        return {where: {type: req.query['type']}};
-    } else {
-        return {};
-    }
+function getSearchOption(type) {
+    if(type !== undefined)
+        return {where: {type: type}};
+    else
+        return {}
 }
 
 function getRandom(maxNum) {
     return Math.floor(Math.random() * maxNum)
 }
 
-const recommend = async (req) => {
-    const menuList = await Menu.findAll(getSearchOption(req));
-    const quantity = req.query['num'];
+const recommend = async (type, num) => {
+    const menuList = await Menu.findAll(getSearchOption(type));
+    const quantity = num;
 
     if (quantity == 1 || quantity === undefined) {
         return menuList[getRandom(menuList.length)]
@@ -42,25 +41,25 @@ const recommend = async (req) => {
     return Array.from(data);
 }
 
-const upload = async (req) => {
+const upload = async (name, type) => {
     await Menu.create({
-        name: req.body.name,
-        type: req.body.type
+        name,
+        type
     });
 }
 
-const update = async (req) => {
+const update = async (menuId, name, type) => {
     await Menu.update({
-        name: req.body.name,
-        type: req.body.type
+        name,
+        type
     }, {
-        where : { id: req.params['menuId'] }
+        where : { id: menuId }
     })
 }
 
-const destroy = async (req) => {
+const destroy = async (menuId) => {
     await Menu.destroy({
-        where : { id: req.params['menuId'] }
+        where : { id: menuId }
     })
 }
 
