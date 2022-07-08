@@ -9,7 +9,7 @@ db.sequelize.sync({force: false })
     .then(() => {
         console.log("DB Connected");
     }).catch((err) => {
-    console.error(err);
+        //에러처리
     })
 
 app.use(express.json());
