@@ -1,13 +1,13 @@
 import {Router} from "express";
-import {getMenu, getMenuType, recommendMenu, uploadMenu, updateMenu, destroyMenu} from "../controllers/menuController.js";
+import {MenuController} from "../controllers/index.js";
 
 const router = Router();
 
-router.get("/", getMenu);
-router.get("/type", getMenuType);
-router.get("/recommend", recommendMenu);
-router.post("/", uploadMenu);
-router.put("/:menuId", updateMenu);
-router.delete("/:menuId", destroyMenu)
+router.get("/", MenuController.getList);
+router.get("/type", MenuController.getType);
+router.get("/recommend", MenuController.recommend);
+router.post("/", MenuController.upload);
+router.put("/:menuId", MenuController.update);
+router.delete("/:menuId", MenuController.destroy)
 
 export default router;
